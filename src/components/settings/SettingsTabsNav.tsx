@@ -32,12 +32,13 @@ export default function SettingsTabsNav({
               key={item.id}
               type="button"
               onClick={() => onTabChange(item.id)}
-              className={`flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-semibold transition-all cursor-pointer w-full text-left ${isActive
-                ? "bg-[#E1D4F4] text-[#6B1294] shadow-2xs"
-                : "text-gray-600 hover:text-gray-900 hover:bg-gray-200/60"
-                }`}
+              className={`flex items-center gap-3 px-4 py-3 rounded-lg text-xs sm:text-sm font-bold transition-all cursor-pointer w-full text-left ${
+                isActive
+                  ? "bg-[#F5EBE1] text-[#57154D] shadow-2xs"
+                  : "text-gray-600 hover:text-gray-900 hover:bg-gray-200/60"
+              }`}
             >
-              <Icon className={`w-4 h-4 ${isActive ? "text-[#6B1294]" : "text-gray-500"}`} />
+              <Icon className={`w-4 h-4 ${isActive ? "text-[#57154D]" : "text-gray-500"}`} />
               <span>{item.label}</span>
             </button>
           );

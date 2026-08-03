@@ -1,11 +1,25 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { AlertTriangle, Bell, ChevronRight, LogOut, User, X } from "lucide-react";
 import toast from "react-hot-toast";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { removeToken } from "../../utils/storage";
+
+const routeTitleMap: Record<string, string> = {
+  "/": "Overview",
+  "/dashboard-overview": "Overview",
+  "/user-management": "User Management",
+  "/user-requests": "User Requests",
+  "/company-positions": "Company Positions",
+  "/mentorship-program": "Mentorship Program",
+  "/content-management": "Content Management",
+  "/help-support": "Help & Support",
+  "/legal": "Legal Content Management",
+  "/notifications": "Notifications",
+  "/settings": "Settings",
+};
 
 export default function Header() {
   const userName = "Admin";
@@ -13,9 +27,22 @@ export default function Header() {
   const userInitial = "D";
 
   const router = useRouter();
+  const pathname = usePathname();
+
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [showLogoutConfirmModal, setShowLogoutConfirmModal] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+
+  // Compute dynamic breadcrumb title based on current pathname
+  const currentRouteTitle =
+    routeTitleMap[pathname] ||
+    pathname
+      .split("/")
+      .filter(Boolean)
+      .pop()
+      ?.replace(/-/g, " ")
+      .replace(/\b\w/g, (c) => c.toUpperCase()) ||
+    "Overview";
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -61,13 +88,13 @@ export default function Header() {
   return (
     <>
       <header className="flex h-[72px] items-center justify-between px-4 sm:px-8 bg-[#EAEAEA] border-b border-gray-200/50 w-full shrink-0">
-        {/* Left side - Sidebar Toggle & Breadcrumb */}
+        {/* Left side - Sidebar Toggle & Dynamic Breadcrumb */}
         <div className="flex items-center gap-3">
           <SidebarTrigger className="p-2 text-gray-600 hover:bg-gray-200/70 rounded-lg cursor-pointer" />
           <nav className="flex items-center gap-1.5 text-xs text-gray-500 font-medium">
             <span>Home Page</span>
             <ChevronRight className="w-3.5 h-3.5 text-gray-400" />
-            <span className="text-gray-700 font-semibold">Overview</span>
+            <span className="text-gray-900 font-semibold">{currentRouteTitle}</span>
           </nav>
         </div>
 

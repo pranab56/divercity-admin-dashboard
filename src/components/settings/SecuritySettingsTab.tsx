@@ -53,11 +53,11 @@ export default function SecuritySettingsTab() {
   };
 
   return (
-    <div className="lg:col-span-9 bg-[#EBEBEB] border border-gray-300/50 rounded-lg p-6 sm:p-8 shadow-xs">
+    <div className="lg:col-span-9 bg-[#EBEBEB] border border-gray-300/60 rounded-lg p-6 sm:p-8 shadow-2xs">
       <form onSubmit={handleUpdatePassword} className="space-y-6">
         <div>
           <h2 className="text-lg font-bold text-gray-900">Security Settings</h2>
-          <p className="text-xs text-gray-500 font-normal mt-0.5">
+          <p className="text-xs text-gray-500 font-medium mt-0.5">
             Protect your account and platform data
           </p>
         </div>
@@ -77,10 +77,11 @@ export default function SecuritySettingsTab() {
                   setCurrentPassword(e.target.value);
                   if (e.target.value) setErrors((prev) => ({ ...prev, currentPassword: "" }));
                 }}
-                className={`w-full pl-4 pr-10 py-3.5 bg-white border rounded-md text-xs font-medium text-gray-900 focus:outline-none transition-colors ${errors.currentPassword
+                className={`w-full pl-4 pr-10 py-3 bg-white border rounded-lg text-xs sm:text-sm font-semibold text-gray-900 focus:outline-none transition-all shadow-2xs ${
+                  errors.currentPassword
                     ? "border-red-500 focus:ring-2 focus:ring-red-400/40 bg-red-50/30"
-                    : "border-gray-300/80 focus:ring-2 focus:ring-[#8E25E3]/40"
-                  }`}
+                    : "border-gray-300 focus:ring-2 focus:ring-[#57154D]/30"
+                }`}
               />
               <button
                 type="button"
@@ -112,10 +113,11 @@ export default function SecuritySettingsTab() {
                   setNewPassword(e.target.value);
                   if (e.target.value) setErrors((prev) => ({ ...prev, newPassword: "" }));
                 }}
-                className={`w-full pl-4 pr-10 py-3.5 bg-white border rounded-md text-xs font-medium text-gray-900 focus:outline-none transition-colors ${errors.newPassword
+                className={`w-full pl-4 pr-10 py-3 bg-white border rounded-lg text-xs sm:text-sm font-semibold text-gray-900 focus:outline-none transition-all shadow-2xs ${
+                  errors.newPassword
                     ? "border-red-500 focus:ring-2 focus:ring-red-400/40 bg-red-50/30"
-                    : "border-gray-300/80 focus:ring-2 focus:ring-[#8E25E3]/40"
-                  }`}
+                    : "border-gray-300 focus:ring-2 focus:ring-[#57154D]/30"
+                }`}
               />
               <button
                 type="button"
@@ -146,10 +148,11 @@ export default function SecuritySettingsTab() {
                 setConfirmPassword(e.target.value);
                 if (e.target.value) setErrors((prev) => ({ ...prev, confirmPassword: "" }));
               }}
-              className={`w-full px-4 py-3.5 bg-white border rounded-md text-xs font-medium text-gray-900 focus:outline-none transition-colors ${errors.confirmPassword
+              className={`w-full px-4 py-3 bg-white border rounded-lg text-xs sm:text-sm font-semibold text-gray-900 focus:outline-none transition-all shadow-2xs ${
+                errors.confirmPassword
                   ? "border-red-500 focus:ring-2 focus:ring-red-400/40 bg-red-50/30"
-                  : "border-gray-300/80 focus:ring-2 focus:ring-[#8E25E3]/40"
-                }`}
+                  : "border-gray-300 focus:ring-2 focus:ring-[#57154D]/30"
+              }`}
             />
             {errors.confirmPassword && (
               <p className="text-red-500 text-[11px] mt-1.5 font-medium flex items-center gap-1">
@@ -162,7 +165,7 @@ export default function SecuritySettingsTab() {
           <div className="pt-2">
             <button
               type="submit"
-              className="px-5 py-2.5 bg-[#8E25E3] hover:bg-[#781dc6] text-white font-medium text-xs rounded-md shadow-xs transition-colors cursor-pointer"
+              className="px-6 py-3 bg-[#57154D] hover:bg-[#47103F] text-white font-bold text-xs sm:text-sm rounded-lg shadow-xs transition-all cursor-pointer"
             >
               Update Password
             </button>

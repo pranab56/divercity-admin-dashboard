@@ -12,9 +12,9 @@ export default function SettingsPage() {
   const [activeTab, setActiveTab] = useState<SettingsTab>("General");
 
   // General Settings Form State
-  const [platformName, setPlatformName] = useState("ProjexPro");
-  const [supportEmail, setSupportEmail] = useState("support@projexpro.com");
-  const [emailAddress, setEmailAddress] = useState("admin@projexpro.com");
+  const [platformName, setPlatformName] = useState("Divercity");
+  const [supportEmail, setSupportEmail] = useState("support@divercity.com");
+  const [emailAddress, setEmailAddress] = useState("admin@divercity.com");
   const [phoneNumber, setPhoneNumber] = useState("+1 (555) 234-5678");
   const [houseAddress, setHouseAddress] = useState("1200 Market Street, Suite 400, Austin, TX");
 
@@ -24,7 +24,7 @@ export default function SettingsPage() {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 max-w-[1600px] mx-auto pb-12">
       {/* Header */}
       <SettingsHeader onSaveChanges={() => handleSaveChanges()} />
 

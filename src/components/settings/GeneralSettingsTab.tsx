@@ -30,16 +30,16 @@ export default function GeneralSettingsTab({
   onSave,
 }: GeneralSettingsTabProps) {
   return (
-    <div className="lg:col-span-9 bg-[#EBEBEB] border border-gray-300/50 rounded-lg p-6 sm:p-8 shadow-xs">
+    <div className="lg:col-span-9 bg-[#EBEBEB] border border-gray-300/60 rounded-lg p-6 sm:p-8 shadow-2xs">
       <form onSubmit={onSave} className="space-y-6">
         <div>
           <h2 className="text-lg font-bold text-gray-900">General Settings</h2>
-          <p className="text-xs text-gray-500 font-normal mt-0.5">
-            Configure your basic settings
+          <p className="text-xs text-gray-500 font-medium mt-0.5">
+            Configure your basic platform preferences
           </p>
         </div>
 
-        {/* Form Inputs Grid */}
+        {/* Form Inputs Grid with sharp clear borders and brand focus rings */}
         <div className="space-y-5">
           {/* Row 1: Platform Name & Support Email */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -51,7 +51,7 @@ export default function GeneralSettingsTab({
                 type="text"
                 value={platformName}
                 onChange={(e) => setPlatformName(e.target.value)}
-                className="w-full px-4 py-3.5 bg-white border border-gray-300/80 rounded-md text-xs font-medium text-gray-900 focus:ring-2 focus:ring-[#8E25E3]/40 focus:outline-none transition-colors"
+                className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg text-xs sm:text-sm font-semibold text-gray-900 focus:ring-2 focus:ring-[#57154D]/30 focus:outline-none transition-all shadow-2xs"
               />
             </div>
 
@@ -63,7 +63,7 @@ export default function GeneralSettingsTab({
                 type="email"
                 value={supportEmail}
                 onChange={(e) => setSupportEmail(e.target.value)}
-                className="w-full px-4 py-3.5 bg-white border border-gray-300/80 rounded-md text-xs font-medium text-gray-900 focus:ring-2 focus:ring-[#8E25E3]/40 focus:outline-none transition-colors"
+                className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg text-xs sm:text-sm font-semibold text-gray-900 focus:ring-2 focus:ring-[#57154D]/30 focus:outline-none transition-all shadow-2xs"
               />
             </div>
           </div>
@@ -78,7 +78,7 @@ export default function GeneralSettingsTab({
                 type="email"
                 value={emailAddress}
                 onChange={(e) => setEmailAddress(e.target.value)}
-                className="w-full px-4 py-3.5 bg-white border border-gray-300/80 rounded-md text-xs font-medium text-gray-900 focus:ring-2 focus:ring-[#8E25E3]/40 focus:outline-none transition-colors"
+                className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg text-xs sm:text-sm font-semibold text-gray-900 focus:ring-2 focus:ring-[#57154D]/30 focus:outline-none transition-all shadow-2xs"
               />
             </div>
 
@@ -90,7 +90,7 @@ export default function GeneralSettingsTab({
                 type="text"
                 value={phoneNumber}
                 onChange={(e) => setPhoneNumber(e.target.value)}
-                className="w-full px-4 py-3.5 bg-white border border-gray-300/80 rounded-md text-xs font-medium text-gray-900 focus:ring-2 focus:ring-[#8E25E3]/40 focus:outline-none transition-colors"
+                className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg text-xs sm:text-sm font-semibold text-gray-900 focus:ring-2 focus:ring-[#57154D]/30 focus:outline-none transition-all shadow-2xs"
               />
             </div>
 
@@ -102,7 +102,7 @@ export default function GeneralSettingsTab({
                 type="text"
                 value={houseAddress}
                 onChange={(e) => setHouseAddress(e.target.value)}
-                className="w-full px-4 py-3.5 bg-white border border-gray-300/80 rounded-md text-xs font-medium text-gray-900 focus:ring-2 focus:ring-[#8E25E3]/40 focus:outline-none transition-colors"
+                className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg text-xs sm:text-sm font-semibold text-gray-900 focus:ring-2 focus:ring-[#57154D]/30 focus:outline-none transition-all shadow-2xs"
               />
             </div>
           </div>

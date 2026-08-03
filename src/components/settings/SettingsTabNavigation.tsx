@@ -14,17 +14,18 @@ export default function SettingsTabNavigation({
   setActiveTab,
 }: SettingsTabNavigationProps) {
   return (
-    <div className="lg:col-span-3 bg-[#EBEBEB] border border-gray-300/50 rounded-lg p-3 shadow-xs space-y-1.5">
+    <div className="lg:col-span-3 bg-[#EBEBEB] border border-gray-300/60 rounded-lg p-3 shadow-2xs space-y-1.5">
       {/* General Tab */}
       <button
         type="button"
         onClick={() => setActiveTab("General")}
-        className={`w-full px-4 py-3 rounded-md text-xs font-medium transition-all cursor-pointer flex items-center gap-3 ${activeTab === "General"
-            ? "bg-[#E1D4F4] text-[#8E25E3] shadow-2xs"
+        className={`w-full px-4 py-3 rounded-lg text-xs sm:text-sm font-bold transition-all cursor-pointer flex items-center gap-3 ${
+          activeTab === "General"
+            ? "bg-[#F5EBE1] text-[#57154D] shadow-2xs"
             : "text-gray-600 hover:bg-gray-200/70 hover:text-gray-900"
-          }`}
+        }`}
       >
-        <Globe className={`w-4 h-4 ${activeTab === "General" ? "text-[#8E25E3]" : "text-gray-500"}`} />
+        <Globe className={`w-4 h-4 ${activeTab === "General" ? "text-[#57154D]" : "text-gray-500"}`} />
         <span>General</span>
       </button>
 
@@ -32,12 +33,13 @@ export default function SettingsTabNavigation({
       <button
         type="button"
         onClick={() => setActiveTab("Security")}
-        className={`w-full px-4 py-3 rounded-md text-xs font-medium transition-all cursor-pointer flex items-center gap-3 ${activeTab === "Security"
-            ? "bg-[#E1D4F4] text-[#8E25E3] shadow-2xs"
+        className={`w-full px-4 py-3 rounded-lg text-xs sm:text-sm font-bold transition-all cursor-pointer flex items-center gap-3 ${
+          activeTab === "Security"
+            ? "bg-[#F5EBE1] text-[#57154D] shadow-2xs"
             : "text-gray-600 hover:bg-gray-200/70 hover:text-gray-900"
-          }`}
+        }`}
       >
-        <Shield className={`w-4 h-4 ${activeTab === "Security" ? "text-[#8E25E3]" : "text-gray-500"}`} />
+        <Shield className={`w-4 h-4 ${activeTab === "Security" ? "text-[#57154D]" : "text-gray-500"}`} />
         <span>Security</span>
       </button>
     </div>
