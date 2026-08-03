@@ -1,0 +1,90 @@
+[
+  {
+    "id": "PL-2851",
+    "propertyName": "Maple Properties LLC",
+    "location": "Austin, TX",
+    "contactName": "Robert Anderson",
+    "contactEmail": "r.anderson@maple.com",
+    "noOfUnits": 24,
+    "plan": "Enterprise",
+    "status": "Active",
+    "paymentType": "Invoice"
+  },
+  {
+    "id": "PL-2850",
+    "propertyName": "Sunrise Holdings",
+    "location": "San Francisco, CA",
+    "contactName": "Jennifer Lee",
+    "contactEmail": "j.lee@sunrise.com",
+    "noOfUnits": 12,
+    "plan": "Professional",
+    "status": "Active",
+    "paymentType": "Due upon Receipt"
+  },
+  {
+    "id": "PL-2848",
+    "propertyName": "Oak Heights Group",
+    "location": "Chicago, IL",
+    "contactName": "Michael Torres",
+    "contactEmail": "m.torres@oakheights.com",
+    "noOfUnits": 8,
+    "plan": "Professional",
+    "status": "Active",
+    "paymentType": "Milestone Payment"
+  },
+  {
+    "id": "PL-2847",
+    "propertyName": "Harbor Point Realty",
+    "location": "Seattle, WA",
+    "contactName": "Susan Park",
+    "contactEmail": "s.park@harborpoint.com",
+    "noOfUnits": 31,
+    "plan": "Enterprise",
+    "status": "Active",
+    "paymentType": "Invoice"
+  },
+  {
+    "id": "PL-2846",
+    "propertyName": "Greenview Developments",
+    "location": "Denver, CO",
+    "contactName": "David Kim",
+    "contactEmail": "d.kim@greenview.com",
+    "noOfUnits": 6,
+    "plan": "Starter",
+    "status": "Suspended",
+    "paymentType": "Milestone Payment"
+  },
+  {
+    "id": "PL-2845",
+    "propertyName": "Cedar Ridge Villas",
+    "location": "Phoenix, AZ",
+    "contactName": "Nancy Johnson",
+    "contactEmail": "n.johnson@cedar.com",
+    "noOfUnits": 0,
+    "plan": "Starter",
+    "status": "Pending",
+    "paymentType": "Due upon Receipt"
+  },
+  {
+    "id": "PL-2844",
+    "propertyName": "Westpark Commercial",
+    "location": "Miami, FL",
+    "contactName": "Paul Martinez",
+    "contactEmail": "p.martinez@westpark.com",
+    "noOfUnits": 18,
+    "plan": "Professional",
+    "status": "Active",
+    "paymentType": "Due upon Receipt"
+  },
+  {
+    "id": "PL-2843",
+    "propertyName": "Elmwood Properties",
+    "location": "Boston, MA",
+    "contactName": "Lisa White",
+    "contactEmail": "l.white@elmwood.com",
+    "noOfUnits": 9,
+    "plan": "Professional",
+    "status": "Active",
+    "paymentType": "Milestone Payment"
+  }
+]

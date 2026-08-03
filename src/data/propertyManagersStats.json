@@ -1,0 +1,26 @@
+[
+  {
+    "id": "total-properties",
+    "title": "Total Properties",
+    "value": "108",
+    "textColor": "text-blue-600"
+  },
+  {
+    "id": "total-subscriptions",
+    "title": "Total Subscriptions",
+    "value": "6",
+    "textColor": "text-emerald-600"
+  },
+  {
+    "id": "pending-approvals",
+    "title": "Pending Property Approvals",
+    "value": "1",
+    "textColor": "text-amber-500"
+  },
+  {
+    "id": "total-earnings",
+    "title": "Total Earnings",
+    "value": "$ 5413",
+    "textColor": "text-[#8E25E3]"
+  }
+]
