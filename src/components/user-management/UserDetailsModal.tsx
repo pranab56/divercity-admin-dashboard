@@ -592,6 +592,101 @@ export default function UserDetailsModal({ user, onClose }: UserDetailsModalProp
             </div>
           </div>
         )}
+
+        {/* --- 5. INDUSTRY PROFESSIONAL VIEW --- */}
+        {user.role === "Industry Professional" && (
+          <div className="space-y-6">
+            {/* PROFESSIONAL ACTIVITY */}
+            <div>
+              <p className="text-[11px] font-bold text-gray-400 tracking-wider uppercase mb-3">
+                PROFESSIONAL ACTIVITY
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div className="bg-[#F4F4F6] rounded-lg p-4 border border-gray-200/50">
+                  <div className="flex items-center gap-1.5 text-xs font-semibold text-gray-500">
+                    <span className="w-2 h-2 rounded-full bg-emerald-500" />
+                    <span>Mentorship Sessions</span>
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mt-2">{user.sessionsConducted || 14}</h3>
+                  <p className="text-[10px] text-gray-400 font-medium mt-1">Sessions completed</p>
+                </div>
+
+                <div className="bg-[#F4F4F6] rounded-lg p-4 border border-gray-200/50">
+                  <div className="flex items-center gap-1.5 text-xs font-semibold text-gray-500">
+                    <span className="w-2 h-2 rounded-full bg-blue-500" />
+                    <span>Students Mentored</span>
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mt-2">{user.mentorshipsCount || 9}</h3>
+                  <p className="text-[10px] text-gray-400 font-medium mt-1">Directly guided</p>
+                </div>
+
+                <div className="bg-[#F4F4F6] rounded-lg p-4 border border-gray-200/50">
+                  <div className="flex items-center gap-1.5 text-xs font-semibold text-gray-500">
+                    <span className="w-2 h-2 rounded-full bg-amber-500" />
+                    <span>Experience</span>
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mt-2">{user.yearsOfExperience || "10+ Years"}</h3>
+                  <p className="text-[10px] text-gray-400 font-medium mt-1">Industry background</p>
+                </div>
+              </div>
+            </div>
+
+            {/* PROFESSIONAL INFORMATION */}
+            <div>
+              <p className="text-[11px] font-bold text-gray-400 tracking-wider uppercase mb-3">
+                PROFESSIONAL INFORMATION
+              </p>
+              <div className="bg-[#F4F4F6] rounded-lg p-6 border border-gray-200/50 flex flex-col sm:flex-row items-center gap-6">
+                <div className="relative w-24 h-24 rounded-full overflow-hidden shrink-0 border-2 border-white shadow-md">
+                  <Image
+                    src={user.avatar || "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=300&auto=format&fit=crop"}
+                    alt="Industry Professional"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-4 gap-x-8 w-full text-xs">
+                  <div>
+                    <span className="text-gray-400 font-medium text-[11px] block">Full Name</span>
+                    <span className="text-gray-900 font-bold text-sm block mt-0.5">{user.name}</span>
+                  </div>
+                  <div>
+                    <span className="text-gray-400 font-medium text-[11px] block">Job Title</span>
+                    <span className="text-gray-900 font-bold text-sm block mt-0.5">{user.jobTitle || "Principal Bio-Engineer"}</span>
+                  </div>
+                  <div>
+                    <span className="text-gray-400 font-medium text-[11px] block">Company / Organization</span>
+                    <span className="text-gray-900 font-bold text-sm block mt-0.5">{user.companyName || "BioTech Innovations Ltd"}</span>
+                  </div>
+                  <div>
+                    <span className="text-gray-400 font-medium text-[11px] block">Industry Sector</span>
+                    <span className="text-gray-900 font-bold text-sm block mt-0.5">{user.industrySector || "Healthcare & Technology"}</span>
+                  </div>
+                  <div>
+                    <span className="text-gray-400 font-medium text-[11px] block">Field of Expertise</span>
+                    <span className="text-gray-900 font-bold text-sm block mt-0.5">{user.fieldOfExpertise || "Genomics & Robotics"}</span>
+                  </div>
+                  <div>
+                    <span className="text-gray-400 font-medium text-[11px] block">Email</span>
+                    <span className="text-gray-900 font-bold text-sm block mt-0.5">{user.email}</span>
+                  </div>
+                  <div>
+                    <span className="text-gray-400 font-medium text-[11px] block">Phone Number</span>
+                    <span className="text-gray-900 font-bold text-sm block mt-0.5">{user.phoneNumber || "+44 20 7946 0123"}</span>
+                  </div>
+                  <div>
+                    <span className="text-gray-400 font-medium text-[11px] block">Account Status</span>
+                    <span className="text-gray-900 font-bold text-sm block mt-0.5">{user.status}</span>
+                  </div>
+                  <div>
+                    <span className="text-gray-400 font-medium text-[11px] block">Member Since</span>
+                    <span className="text-gray-900 font-bold text-sm block mt-0.5">{user.memberSince || "Jan 12, 2025"}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

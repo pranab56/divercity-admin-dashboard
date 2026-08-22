@@ -126,6 +126,23 @@ const initialRequestsList: UserItem[] = [
         school: "St. Mary's Secondary School",
         avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=300&auto=format&fit=crop",
     },
+    {
+        id: "REQ-007",
+        name: "Dr. Sarah Jenkins",
+        role: "Industry Professional",
+        email: "sarah.jenkins@biotech.com",
+        status: "Active",
+        jobTitle: "Principal Bio-Engineer",
+        companyName: "BioTech Innovations Ltd",
+        industrySector: "Healthcare & Technology",
+        yearsOfExperience: "10+ Years",
+        fieldOfExpertise: "Genomics & Robotics",
+        sessionsConducted: 14,
+        mentorshipsCount: 9,
+        phoneNumber: "+44 20 7946 0123",
+        memberSince: "Jan 12, 2025",
+        avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=300&auto=format&fit=crop",
+    },
 ];
 
 export default function UserRequestsPage() {
@@ -134,7 +151,7 @@ export default function UserRequestsPage() {
     const [selectedUserDetail, setSelectedUserDetail] = useState<UserItem | null>(null);
     const [currentPage, setCurrentPage] = useState(1);
 
-    const rolesList: ("All" | UserRole)[] = ["All", "Teacher", "Company", "Student", "Parent"];
+    const rolesList: ("All" | UserRole)[] = ["All", "Teacher", "Company", "Student", "Parent", "Industry Professional"];
 
     const filteredRequests = requestsList.filter((r) => {
         return selectedRoleFilter === "All" || r.role === selectedRoleFilter;
@@ -169,7 +186,7 @@ export default function UserRequestsPage() {
                 {/* Top Right Role Filter Selector (shadcn Select) */}
                 <div className="shrink-0 w-full sm:w-auto">
                     <Select value={selectedRoleFilter} onValueChange={setSelectedRoleFilter}>
-                        <SelectTrigger className="w-full sm:w-[160px] bg-[#F4F4F6] py-5 cursor-pointer sm:bg-[#F5F5F7] border border-gray-200/60 rounded-lg text-xs sm:text-sm font-semibold text-gray-700 shadow-2xs focus:ring-2 focus:ring-[#57154D]/30 h-10 px-4">
+                        <SelectTrigger className="w-full sm:w-[190px] bg-[#F4F4F6] py-5 cursor-pointer sm:bg-[#F5F5F7] border border-gray-200/60 rounded-lg text-xs sm:text-sm font-semibold text-gray-700 shadow-2xs focus:ring-2 focus:ring-[#57154D]/30 h-10 px-4">
                             <SelectValue placeholder="Select Role" />
                         </SelectTrigger>
                         <SelectContent className="bg-white border border-gray-200 rounded-lg shadow-xl z-50">

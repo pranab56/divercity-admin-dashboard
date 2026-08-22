@@ -1,4 +1,4 @@
-export type UserRole = "Student" | "Teacher" | "Parent" | "Company";
+export type UserRole = "Student" | "Teacher" | "Parent" | "Company" | "Industry Professional";
 
 export type UserStatus = "Active" | "Suspended";
 
@@ -32,6 +32,13 @@ export type UserItem = {
   activeOpportunities?: number;
   studentsHired?: number;
   industrySector?: string;
+  // Industry Professional fields
+  jobTitle?: string;
+  companyName?: string;
+  yearsOfExperience?: string;
+  fieldOfExpertise?: string;
+  sessionsConducted?: number;
+  mentorshipsCount?: number;
 };
 
 export const initialUsersList: UserItem[] = [
@@ -170,5 +177,22 @@ export const initialUsersList: UserItem[] = [
     industrySector: "Construction & Engineering",
     phoneNumber: "+44 20 1234 5678",
     avatar: "https://images.unsplash.com/photo-1560179707-f14e90ef3623?q=80&w=300&auto=format&fit=crop",
+  },
+  {
+    id: "USR-009",
+    name: "Dr. Sarah Jenkins",
+    role: "Industry Professional",
+    email: "sarah.jenkins@biotech.com",
+    status: "Active",
+    jobTitle: "Principal Bio-Engineer",
+    companyName: "BioTech Innovations Ltd",
+    industrySector: "Healthcare & Technology",
+    yearsOfExperience: "10+ Years",
+    fieldOfExpertise: "Genomics & Robotics",
+    sessionsConducted: 14,
+    mentorshipsCount: 9,
+    phoneNumber: "+44 20 7946 0123",
+    memberSince: "Jan 12, 2025",
+    avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=300&auto=format&fit=crop",
   },
 ];

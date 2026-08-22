@@ -17,7 +17,6 @@ import {
   LogOut,
   MessageSquare,
   ShieldCheck,
-  UserPlus,
   Users,
 } from "lucide-react";
 import Link from "next/link";
@@ -52,7 +51,7 @@ type SidebarItem = {
 const sidebars: SidebarItem[] = [
   { name: "Overview", path: "/", icon: LayoutGrid },
   { name: "User Management", path: "/user-management", icon: Users },
-  { name: "User Requests", path: "/user-requests", icon: UserPlus },
+  // { name: "User Requests", path: "/user-requests", icon: UserPlus },
   { name: "Company Positions", path: "/company-positions", icon: Briefcase },
   { name: "Content Management", path: "/content-management", icon: FileText },
   { name: "Mentorship Program", path: "/mentorship-program", icon: MessageSquare },

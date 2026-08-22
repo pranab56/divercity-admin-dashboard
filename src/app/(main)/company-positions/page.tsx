@@ -79,6 +79,9 @@ export default function CompanyPositionsPage() {
     const [showAddJobTypeModal, setShowAddJobTypeModal] = useState(false);
     const [newJobTypeName, setNewJobTypeName] = useState("");
 
+    const [editingJobType, setEditingJobType] = useState<string | null>(null);
+    const [editJobTypeName, setEditJobTypeName] = useState("");
+
     const [showAddPositionModal, setShowAddPositionModal] = useState(false);
     const [newPositionTitle, setNewPositionTitle] = useState("");
     const [newPositionCategory, setNewPositionCategory] = useState("Traditional Trade");
@@ -117,6 +120,20 @@ export default function CompanyPositionsPage() {
         toast.success(`Job type "${newJobTypeName}" added!`);
         setNewJobTypeName("");
         setShowAddJobTypeModal(false);
+    };
+
+    // Update Job Type Handler
+    const handleUpdateJobType = (e: React.FormEvent) => {
+        e.preventDefault();
+        if (!editingJobType || !editJobTypeName.trim()) {
+            toast.error("Please enter a job type name");
+            return;
+        }
+        setJobTypes((prev) =>
+            prev.map((item) => (item === editingJobType ? editJobTypeName.trim() : item))
+        );
+        toast.success("Job type updated successfully!");
+        setEditingJobType(null);
     };
 
     // Remove Job Type Handler
@@ -281,15 +298,11 @@ export default function CompanyPositionsPage() {
                                     <button
                                         type="button"
                                         onClick={() => {
-                                            const updated = prompt("Edit Job Type name:", jt);
-                                            if (updated && updated.trim()) {
-                                                setJobTypes((prev) =>
-                                                    prev.map((item) => (item === jt ? updated.trim() : item))
-                                                );
-                                                toast.success("Job type updated");
-                                            }
+                                            setEditingJobType(jt);
+                                            setEditJobTypeName(jt);
                                         }}
                                         className="p-1 text-gray-400 hover:text-gray-700 transition-colors cursor-pointer"
+                                        title="Edit Job Type"
                                     >
                                         <Pencil className="w-4 h-4" />
                                     </button>
@@ -646,6 +659,49 @@ export default function CompanyPositionsPage() {
                                 className="w-full py-3 bg-[#57154D] hover:bg-[#47103F] text-white font-bold text-xs sm:text-sm rounded-lg transition-colors cursor-pointer shadow-xs mt-2"
                             >
                                 Update Position
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            )}
+
+            {/* --- MODAL 4: EDIT JOB TYPE MODAL --- */}
+            {editingJobType !== null && (
+                <div className="fixed inset-0 bg-black/50 backdrop-blur-xs flex items-center justify-center z-50 p-4 animate-in fade-in duration-200">
+                    <div className="bg-[#EBEBEB] rounded-lg p-6 sm:p-8 max-w-md w-full shadow-2xl space-y-6 animate-in fade-in zoom-in-95 duration-150 border border-gray-300/60 relative">
+                        <div className="flex items-center justify-between">
+                            <h3 className="text-base sm:text-lg font-bold text-gray-900">
+                                Edit Job Type
+                            </h3>
+                            <button
+                                type="button"
+                                onClick={() => setEditingJobType(null)}
+                                className="p-1.5 text-gray-400 hover:text-gray-700 bg-white/80 rounded-full transition-colors cursor-pointer"
+                            >
+                                <X className="w-4 h-4" />
+                            </button>
+                        </div>
+
+                        <form onSubmit={handleUpdateJobType} className="space-y-5">
+                            <div>
+                                <label className="text-[11px] font-bold text-gray-400 uppercase tracking-wider block mb-2">
+                                    JOB TYPE NAME
+                                </label>
+                                <input
+                                    type="text"
+                                    value={editJobTypeName}
+                                    onChange={(e) => setEditJobTypeName(e.target.value)}
+                                    placeholder="e.g. Internship"
+                                    className="w-full px-4 py-3 bg-[#F4F4F6] border border-gray-200/80 rounded-lg text-xs sm:text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#57154D]/30"
+                                    autoFocus
+                                />
+                            </div>
+
+                            <button
+                                type="submit"
+                                className="w-full py-3 bg-[#57154D] hover:bg-[#47103F] text-white font-bold text-xs sm:text-sm rounded-lg transition-colors cursor-pointer shadow-xs"
+                            >
+                                Update Job Type
                             </button>
                         </form>
                     </div>

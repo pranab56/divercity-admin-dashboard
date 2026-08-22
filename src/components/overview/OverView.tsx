@@ -31,6 +31,7 @@ const statCards = [
   { label: "TOTAL PARENT", value: "100" },
   { label: "TOTAL COMPANY", value: "200" },
   { label: "TOTAL TEACHER", value: "700" },
+  { label: "TOTAL INDUSTRY PROF", value: "150" },
 ];
 
 // 2. Bar Chart Data (May is highlighted)
@@ -46,10 +47,11 @@ const userBarData = [
 
 // 3. User Distribution Donut Chart Data
 const distributionData = [
-  { name: "Student", percentage: 40, color: "#57154D" },
+  { name: "Student", percentage: 35, color: "#57154D" },
   { name: "Teacher", percentage: 10, color: "#0C4A6E" },
-  { name: "Parent", percentage: 30, color: "#93C5FD" },
-  { name: "Company", percentage: 20, color: "#CBD5E1" },
+  { name: "Parent", percentage: 25, color: "#93C5FD" },
+  { name: "Company", percentage: 15, color: "#CBD5E1" },
+  { name: "Industry Professional", percentage: 15, color: "#D97706" },
 ];
 
 export default function Overview(): React.ReactElement {
@@ -94,8 +96,8 @@ export default function Overview(): React.ReactElement {
         </div>
       </div>
 
-      {/* 4 Stat Cards Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      {/* 5 Stat Cards Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-5">
         {statCards.map((card, idx) => (
           <div
             key={idx}

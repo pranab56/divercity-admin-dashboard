@@ -24,7 +24,7 @@ export default function UserFiltersBar({
   selectedRoleFilter,
   setSelectedRoleFilter,
 }: UserFiltersBarProps) {
-  const roles: ("All" | UserRole)[] = ["All", "Student", "Teacher", "Parent", "Company"];
+  const roles: ("All" | UserRole)[] = ["All", "Student", "Teacher", "Parent", "Company", "Industry Professional"];
 
   return (
     <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
@@ -43,7 +43,7 @@ export default function UserFiltersBar({
       {/* Right Role Filter Select Dropdown (shadcn Select Component) */}
       <div className="shrink-0 w-full sm:w-auto">
         <Select value={selectedRoleFilter} onValueChange={setSelectedRoleFilter}>
-          <SelectTrigger className="w-full sm:w-[160px] bg-[#F4F4F6] py-5 cursor-pointer sm:bg-[#F5F5F7] border border-gray-200/60 rounded-lg text-xs sm:text-sm font-semibold text-gray-700 shadow-2xs focus:ring-2 focus:ring-[#57154D]/30 h-10 px-4">
+          <SelectTrigger className="w-full sm:w-[190px] bg-[#F4F4F6] py-5 cursor-pointer sm:bg-[#F5F5F7] border border-gray-200/60 rounded-lg text-xs sm:text-sm font-semibold text-gray-700 shadow-2xs focus:ring-2 focus:ring-[#57154D]/30 h-10 px-4">
             <SelectValue placeholder="Select Role" />
           </SelectTrigger>
           <SelectContent className="bg-white border border-gray-200 rounded-lg shadow-xl z-50">
