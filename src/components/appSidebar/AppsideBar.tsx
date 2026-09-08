@@ -13,15 +13,21 @@ import {
   Briefcase,
   FileText,
   Headphones,
+  HeartPulse,
   LayoutGrid,
   LogOut,
   MessageSquare,
   ShieldCheck,
+  UserPlus,
   Users,
 } from "lucide-react";
+
 import Link from "next/link";
+
 import { usePathname, useRouter } from "next/navigation";
+
 import React, { useState } from "react";
+
 import toast from "react-hot-toast";
 import { removeToken } from "@/utils/storage";
 
@@ -51,10 +57,11 @@ type SidebarItem = {
 const sidebars: SidebarItem[] = [
   { name: "Overview", path: "/", icon: LayoutGrid },
   { name: "User Management", path: "/user-management", icon: Users },
-  // { name: "User Requests", path: "/user-requests", icon: UserPlus },
+  { name: "User Requests", path: "/user-requests", icon: UserPlus },
   { name: "Company Positions", path: "/company-positions", icon: Briefcase },
   { name: "Content Management", path: "/content-management", icon: FileText },
   { name: "Mentorship Program", path: "/mentorship-program", icon: MessageSquare },
+  { name: "Hard Hat & Women's Health", path: "/hard-hat-womens-health", icon: HeartPulse },
   { name: "Help & Support", path: "/help-support", icon: Headphones },
   { name: "Legal", path: "/legal", icon: ShieldCheck },
 ];

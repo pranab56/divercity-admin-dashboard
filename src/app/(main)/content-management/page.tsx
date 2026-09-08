@@ -183,16 +183,68 @@ export default function ContentManagementPage() {
     const [showUploadArticleModal, setShowUploadArticleModal] = useState(false);
 
     // Quiz Form state
+    type QuizQuestion = {
+        id: string;
+        questionText: string;
+        timeLimit: string;
+        options: { text: string; isCorrect: boolean }[];
+    };
+
+    const [quizContentType, setQuizContentType] = useState("Skills Assessment");
     const [quizTitle, setQuizTitle] = useState("");
     const [quizSubtitle, setQuizSubtitle] = useState("");
-    const [questionText, setQuestionText] = useState("");
-    const [questionTime, setQuestionTime] = useState("5 Min");
-    const [options, setOptions] = useState([
+
+    // Array of added questions (up to 5)
+    const [quizQuestions, setQuizQuestions] = useState<QuizQuestion[]>([]);
+
+    // Active Question input state
+    const [currentQuestionText, setCurrentQuestionText] = useState("");
+    const [currentQuestionTime, setCurrentQuestionTime] = useState("5 Min");
+    const [currentOptions, setCurrentOptions] = useState([
         { text: "Option 1", isCorrect: true },
         { text: "Option 2", isCorrect: false },
         { text: "Option 3", isCorrect: false },
         { text: "Option 4", isCorrect: false },
     ]);
+
+    // Handle Add Single Question (Max 5 constraint)
+    const handleAddQuestion = () => {
+        if (quizQuestions.length >= 5) {
+            toast.error("5 tar besi question add korte parbe na! (Maximum 5 questions allowed)");
+            return;
+        }
+
+        if (!currentQuestionText.trim()) {
+            toast.error("Please enter a question title");
+            return;
+        }
+
+        const newQuestion: QuizQuestion = {
+            id: `q-${Date.now()}`,
+            questionText: currentQuestionText.trim(),
+            timeLimit: currentQuestionTime,
+            options: currentOptions.map((opt) => ({ ...opt })),
+        };
+
+        setQuizQuestions((prev) => [...prev, newQuestion]);
+        toast.success(`Question ${quizQuestions.length + 1} added!`);
+
+        // Reset current question input
+        setCurrentQuestionText("");
+        setCurrentQuestionTime("5 Min");
+        setCurrentOptions([
+            { text: "Option 1", isCorrect: true },
+            { text: "Option 2", isCorrect: false },
+            { text: "Option 3", isCorrect: false },
+            { text: "Option 4", isCorrect: false },
+        ]);
+    };
+
+    // Handle Delete Question from quiz list
+    const handleDeleteQuestion = (id: string) => {
+        setQuizQuestions((prev) => prev.filter((q) => q.id !== id));
+        toast.success("Question removed");
+    };
 
     // Article & Local Video Upload state
     const [contentType, setContentType] = useState("Career Exploration");
@@ -252,19 +304,53 @@ export default function ContentManagementPage() {
             toast.error("Please enter a quiz title");
             return;
         }
+
+        let finalQuestions = [...quizQuestions];
+        // Automatically append active question if filled out and < 5
+        if (currentQuestionText.trim() && finalQuestions.length < 5) {
+            finalQuestions.push({
+                id: `q-${Date.now()}`,
+                questionText: currentQuestionText.trim(),
+                timeLimit: currentQuestionTime,
+                options: currentOptions.map((opt) => ({ ...opt })),
+            });
+        }
+
+        if (finalQuestions.length === 0) {
+            toast.error("Please add at least 1 question to the quiz.");
+            return;
+        }
+
+        if (finalQuestions.length > 5) {
+            toast.error("5 tar besi question add korte parbe na! (Max 5 questions limit)");
+            return;
+        }
+
         const newQuiz: ContentItem = {
             id: `cnt-${Date.now()}`,
             title: quizTitle.trim(),
             type: "Quiz",
-            category: "Skills Assessment",
+            category: quizContentType || "Skills Assessment",
             status: "published",
             date: new Date().toISOString().split("T")[0],
             icon: "quiz",
         };
+
         setContentList((prev) => [newQuiz, ...prev]);
-        toast.success("Quiz created and published for review!");
+        toast.success(`Quiz created with ${finalQuestions.length} question(s) and published for review!`);
+        
+        // Reset full quiz state
         setQuizTitle("");
         setQuizSubtitle("");
+        setQuizQuestions([]);
+        setCurrentQuestionText("");
+        setCurrentQuestionTime("5 Min");
+        setCurrentOptions([
+            { text: "Option 1", isCorrect: true },
+            { text: "Option 2", isCorrect: false },
+            { text: "Option 3", isCorrect: false },
+            { text: "Option 4", isCorrect: false },
+        ]);
         setShowCreateQuizModal(false);
     };
 
@@ -719,132 +805,255 @@ export default function ContentManagementPage() {
                     </div>
                 </div>
             )}
-
-            {/* --- MODAL 1: CREATE QUIZ MODAL --- */}
+            {/* --- MODAL 1: CREATE QUIZ MODAL (Up to 5 Questions Max) --- */}
             {showCreateQuizModal && (
-                <div className="fixed inset-0 bg-black/60 backdrop-blur-xs flex items-center justify-center z-50 p-4 sm:p-6 overflow-y-auto">
-                    <div className="bg-[#EBEBEB] rounded-lg p-6 sm:p-8 max-w-2xl w-full shadow-2xl space-y-5 animate-in fade-in zoom-in-95 duration-200 border border-gray-300 relative max-h-[90vh] overflow-y-auto">
-                        <div className="flex items-center justify-between border-b border-gray-300/80 pb-3">
+                <div className="fixed inset-0 bg-black/50 backdrop-blur-xs flex items-center justify-center z-50 p-4 sm:p-6 overflow-y-auto">
+                    <div className="bg-[#EDEDF0] sm:bg-[#EBEBEB] rounded-2xl p-6 sm:p-8 max-w-3xl w-full shadow-2xl space-y-5 animate-in fade-in zoom-in-95 duration-200 border border-gray-300/60 relative max-h-[90vh] overflow-y-auto">
+                        {/* Header */}
+                        <div className="flex items-start justify-between border-b border-gray-300/60 pb-3">
                             <div>
-                                <h3 className="text-base sm:text-lg font-bold text-gray-900">
+                                <h3 className="text-lg sm:text-xl font-bold text-gray-900">
                                     Create Quiz
                                 </h3>
                                 <p className="text-xs text-gray-500 font-medium mt-0.5">
-                                    Create interactive quizzes for your users.
+                                    Create a quiz with up to 5 questions
                                 </p>
                             </div>
                             <button
                                 type="button"
                                 onClick={() => setShowCreateQuizModal(false)}
-                                className="p-1.5 text-gray-400 hover:text-gray-700 bg-white/80 rounded-full transition-colors cursor-pointer"
+                                className="p-1 text-gray-400 hover:text-gray-700 bg-white/80 rounded-full transition-colors cursor-pointer"
                             >
                                 <X className="w-4 h-4" />
                             </button>
                         </div>
 
                         <form onSubmit={handleCreateQuizSubmit} className="space-y-4">
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                <div>
-                                    <label className="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5">
-                                        TITLE
-                                    </label>
-                                    <input
-                                        type="text"
-                                        value={quizTitle}
-                                        onChange={(e) => setQuizTitle(e.target.value)}
-                                        placeholder="e.g. Basic Construction Tools Quiz"
-                                        className="w-full px-4 py-3 bg-[#E8E8EB] border border-gray-300 rounded-lg text-xs sm:text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#57154D]/30 transition-all font-medium"
-                                        autoFocus
-                                    />
-                                </div>
-
-                                <div>
-                                    <label className="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5">
-                                        SUBTITLE
-                                    </label>
-                                    <input
-                                        type="text"
-                                        value={quizSubtitle}
-                                        onChange={(e) => setQuizSubtitle(e.target.value)}
-                                        placeholder="e.g. Test your knowledge"
-                                        className="w-full px-4 py-3 bg-[#E8E8EB] border border-gray-300 rounded-lg text-xs sm:text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#57154D]/30 transition-all font-medium"
-                                    />
-                                </div>
+                            {/* Content Type Select */}
+                            <div>
+                                <label className="text-xs font-semibold text-gray-700 block mb-1.5">
+                                    Content Type
+                                </label>
+                                <Select value={quizContentType} onValueChange={setQuizContentType}>
+                                    <SelectTrigger className="w-full bg-[#E2E2E5] sm:bg-[#E8E8EB] border-none rounded-xl text-xs sm:text-sm font-medium text-gray-800 h-11 px-4 focus:ring-2 focus:ring-[#57154D]/30 cursor-pointer">
+                                        <SelectValue placeholder="Select Content Type" />
+                                    </SelectTrigger>
+                                    <SelectContent className="bg-white border border-gray-200 rounded-xl shadow-2xl z-[9999]">
+                                        <SelectItem value="Career Exploration" className="font-medium text-xs sm:text-sm cursor-pointer py-2">
+                                            Career Exploration
+                                        </SelectItem>
+                                        <SelectItem value="Skills Assessment" className="font-medium text-xs sm:text-sm cursor-pointer py-2">
+                                            Skills Assessment
+                                        </SelectItem>
+                                        <SelectItem value="General Information" className="font-medium text-xs sm:text-sm cursor-pointer py-2">
+                                            General Information
+                                        </SelectItem>
+                                    </SelectContent>
+                                </Select>
                             </div>
 
-                            <div className="space-y-3 pt-2">
-                                <div className="flex items-center justify-between">
-                                    <span className="text-xs font-bold text-gray-700">Question 1</span>
-                                    <div className="w-32">
-                                        <Select value={questionTime} onValueChange={setQuestionTime}>
-                                            <SelectTrigger className="w-full bg-[#E8E8EB] border border-gray-300 rounded-lg text-xs font-semibold text-gray-800 h-9 px-3">
-                                                <SelectValue placeholder="Time" />
-                                            </SelectTrigger>
-                                            <SelectContent className="bg-white border border-gray-300 rounded-lg shadow-xl z-[9999]">
-                                                <SelectItem value="1 Min" className="text-xs font-semibold">1 Min</SelectItem>
-                                                <SelectItem value="3 Min" className="text-xs font-semibold">3 Min</SelectItem>
-                                                <SelectItem value="5 Min" className="text-xs font-semibold">5 Min</SelectItem>
-                                                <SelectItem value="10 Min" className="text-xs font-semibold">10 Min</SelectItem>
-                                            </SelectContent>
-                                        </Select>
+                            {/* Quiz Title */}
+                            <div>
+                                <label className="text-xs font-semibold text-gray-700 block mb-1.5">
+                                    Quiz Title
+                                </label>
+                                <input
+                                    type="text"
+                                    value={quizTitle}
+                                    onChange={(e) => setQuizTitle(e.target.value)}
+                                    placeholder="Enter quiz title"
+                                    className="w-full px-4 py-3 bg-[#E2E2E5] sm:bg-[#E8E8EB] border-none rounded-xl text-xs sm:text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#57154D]/30 transition-all font-medium"
+                                    autoFocus
+                                />
+                            </div>
+
+                            {/* Quiz Subtitle */}
+                            <div>
+                                <label className="text-xs font-semibold text-gray-700 block mb-1.5">
+                                    Quiz Subtitle
+                                </label>
+                                <input
+                                    type="text"
+                                    value={quizSubtitle}
+                                    onChange={(e) => setQuizSubtitle(e.target.value)}
+                                    placeholder="Enter quiz title"
+                                    className="w-full px-4 py-3 bg-[#E2E2E5] sm:bg-[#E8E8EB] border-none rounded-xl text-xs sm:text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#57154D]/30 transition-all font-medium"
+                                />
+                            </div>
+
+                            {/* Previously Added Questions List */}
+                            {quizQuestions.length > 0 && (
+                                <div className="space-y-2 pt-1">
+                                    <div className="flex items-center justify-between">
+                                        <span className="text-xs font-bold text-gray-700">
+                                            Added Questions ({quizQuestions.length}/5)
+                                        </span>
+                                        {quizQuestions.length >= 5 && (
+                                            <span className="text-[11px] font-bold text-amber-600 bg-amber-50 px-2 py-0.5 rounded-md border border-amber-200">
+                                                Max 5 Questions Limit Reached
+                                            </span>
+                                        )}
+                                    </div>
+                                    <div className="space-y-2 max-h-36 overflow-y-auto pr-1">
+                                        {quizQuestions.map((q, idx) => (
+                                            <div
+                                                key={q.id}
+                                                className="flex items-center justify-between p-3 bg-white/80 border border-gray-200/80 rounded-xl text-xs font-medium"
+                                            >
+                                                <div className="flex items-center gap-2 overflow-hidden">
+                                                    <span className="w-5 h-5 rounded-full bg-[#57154D] text-white text-[10px] font-bold flex items-center justify-center shrink-0">
+                                                        {idx + 1}
+                                                    </span>
+                                                    <span className="truncate text-gray-900 font-semibold">
+                                                        {q.questionText}
+                                                    </span>
+                                                    <span className="text-[10px] bg-purple-100 text-[#57154D] px-2 py-0.5 rounded-md font-bold shrink-0">
+                                                        {q.timeLimit}
+                                                    </span>
+                                                </div>
+                                                <button
+                                                    type="button"
+                                                    onClick={() => handleDeleteQuestion(q.id)}
+                                                    className="p-1 text-red-500 hover:text-red-700 transition-colors cursor-pointer shrink-0 ml-2"
+                                                    title="Remove question"
+                                                >
+                                                    <Trash2 className="w-4 h-4 text-red-500" />
+                                                </button>
+                                            </div>
+                                        ))}
                                     </div>
                                 </div>
+                            )}
 
-                                <div>
-                                    <label className="text-[11px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5">
-                                        QUESTION
-                                    </label>
-                                    <input
-                                        type="text"
-                                        value={questionText}
-                                        onChange={(e) => setQuestionText(e.target.value)}
-                                        placeholder="What tool is used for driving nails?"
-                                        className="w-full px-4 py-3 bg-[#E8E8EB] border border-gray-300 rounded-lg text-xs sm:text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#57154D]/30 transition-all font-medium"
-                                    />
+                            {/* Add New Question Section Box */}
+                            <div className="bg-[#E2E2E5]/70 border border-gray-300/70 rounded-2xl p-5 space-y-4 shadow-2xs">
+                                <div className="flex items-center justify-between">
+                                    <h4 className="text-xs sm:text-sm font-bold text-gray-900">
+                                        {quizQuestions.length >= 5
+                                            ? "Question Limit Reached (5/5)"
+                                            : `Add New Question ${quizQuestions.length > 0 ? `(${quizQuestions.length + 1}/5)` : ""}`}
+                                    </h4>
                                 </div>
 
-                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
-                                    {options.map((opt, idx) => (
-                                        <div key={idx} className="flex items-center gap-2">
-                                            <input
-                                                type="radio"
-                                                name="correctOption"
-                                                checked={opt.isCorrect}
-                                                onChange={() => {
-                                                    setOptions((prev) =>
-                                                        prev.map((o, i) => ({ ...o, isCorrect: i === idx }))
-                                                    );
-                                                }}
-                                                className="w-4 h-4 text-[#57154D] accent-[#57154D] cursor-pointer"
-                                            />
+                                {quizQuestions.length >= 5 ? (
+                                    <div className="p-4 bg-amber-50 border border-amber-200 rounded-xl text-xs font-semibold text-amber-800 text-center">
+                                        You have added 5 questions. You cannot add more than 5 questions per quiz.
+                                    </div>
+                                ) : (
+                                    <>
+                                        {/* Question Input */}
+                                        <div>
+                                            <label className="text-xs font-semibold text-gray-700 block mb-1.5">
+                                                Question
+                                            </label>
                                             <input
                                                 type="text"
-                                                value={opt.text}
-                                                onChange={(e) => {
-                                                    const val = e.target.value;
-                                                    setOptions((prev) =>
-                                                        prev.map((o, i) => (i === idx ? { ...o, text: val } : o))
-                                                    );
-                                                }}
-                                                placeholder={`Option ${idx + 1}`}
-                                                className="w-full px-3 py-2 bg-[#E8E8EB] border border-gray-300 rounded-lg text-xs sm:text-sm text-gray-900 placeholder-gray-400 focus:outline-none font-medium"
+                                                value={currentQuestionText}
+                                                onChange={(e) => setCurrentQuestionText(e.target.value)}
+                                                placeholder="Enter your question"
+                                                className="w-full px-4 py-3 bg-[#E8E8EB] sm:bg-[#EDEDF0] border-none rounded-xl text-xs sm:text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#57154D]/30 font-medium"
                                             />
                                         </div>
-                                    ))}
-                                </div>
+
+                                        {/* Time Select */}
+                                        <div>
+                                            <label className="text-xs font-semibold text-gray-700 block mb-1.5">
+                                                Time
+                                            </label>
+                                            <Select value={currentQuestionTime} onValueChange={setCurrentQuestionTime}>
+                                                <SelectTrigger className="w-full bg-[#E8E8EB] sm:bg-[#EDEDF0] border-none rounded-xl text-xs sm:text-sm font-medium text-gray-800 h-11 px-4 focus:ring-2 focus:ring-[#57154D]/30 cursor-pointer">
+                                                    <SelectValue placeholder="5 Min" />
+                                                </SelectTrigger>
+                                                <SelectContent className="bg-white border border-gray-200 rounded-xl shadow-2xl z-[9999]">
+                                                    <SelectItem value="1 Min" className="text-xs font-medium cursor-pointer py-2">1 Min</SelectItem>
+                                                    <SelectItem value="3 Min" className="text-xs font-medium cursor-pointer py-2">3 Min</SelectItem>
+                                                    <SelectItem value="5 Min" className="text-xs font-medium cursor-pointer py-2">5 Min</SelectItem>
+                                                    <SelectItem value="10 Min" className="text-xs font-medium cursor-pointer py-2">10 Min</SelectItem>
+                                                </SelectContent>
+                                            </Select>
+                                        </div>
+
+                                        {/* Answer Options */}
+                                        <div className="space-y-2.5">
+                                            <label className="text-xs font-semibold text-gray-700 block">
+                                                Answer Options
+                                            </label>
+
+                                            {currentOptions.map((opt, idx) => (
+                                                <div
+                                                    key={idx}
+                                                    onClick={() => {
+                                                        setCurrentOptions((prev) =>
+                                                            prev.map((o, i) => ({ ...o, isCorrect: i === idx }))
+                                                        );
+                                                    }}
+                                                    className={`flex items-center gap-3 px-4 py-3 bg-[#E8E8EB] sm:bg-[#EDEDF0] border rounded-xl cursor-pointer transition-all ${
+                                                        opt.isCorrect
+                                                            ? "border-[#57154D] bg-purple-50/50"
+                                                            : "border-transparent hover:bg-[#E2E2E5]"
+                                                    }`}
+                                                >
+                                                    <input
+                                                        type="checkbox"
+                                                        checked={opt.isCorrect}
+                                                        onChange={() => {
+                                                            setCurrentOptions((prev) =>
+                                                                prev.map((o, i) => ({ ...o, isCorrect: i === idx }))
+                                                            );
+                                                        }}
+                                                        className="w-4 h-4 rounded-md text-[#57154D] accent-[#57154D] cursor-pointer shrink-0"
+                                                    />
+                                                    <input
+                                                        type="text"
+                                                        value={opt.text}
+                                                        onChange={(e) => {
+                                                            const val = e.target.value;
+                                                            setCurrentOptions((prev) =>
+                                                                prev.map((o, i) => (i === idx ? { ...o, text: val } : o))
+                                                            );
+                                                        }}
+                                                        placeholder={`Option ${idx + 1}`}
+                                                        onClick={(e) => e.stopPropagation()}
+                                                        className="w-full bg-transparent border-none text-xs sm:text-sm text-gray-900 placeholder-gray-400 focus:outline-none font-medium"
+                                                    />
+                                                </div>
+                                            ))}
+
+                                            <p className="text-[11px] text-gray-500 font-medium pt-0.5">
+                                                Check the box next to the correct answer
+                                            </p>
+                                        </div>
+
+                                        {/* + Add Question Button */}
+                                        <button
+                                            type="button"
+                                            onClick={handleAddQuestion}
+                                            disabled={quizQuestions.length >= 5}
+                                            className={`px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all flex items-center gap-2 cursor-pointer shadow-2xs ${
+                                                quizQuestions.length >= 5
+                                                    ? "bg-gray-400 text-gray-200 cursor-not-allowed"
+                                                    : "bg-[#646470] hover:bg-[#57154D] text-white"
+                                            }`}
+                                        >
+                                            <Plus className="w-4 h-4 text-white" />
+                                            <span>Add Question</span>
+                                        </button>
+                                    </>
+                                )}
                             </div>
 
-                            <div className="flex items-center justify-end gap-3 pt-4 border-t border-gray-300/80">
+                            {/* Footer Buttons */}
+                            <div className="flex items-center justify-end gap-3 pt-4 border-t border-gray-300/60">
                                 <button
                                     type="button"
                                     onClick={() => setShowCreateQuizModal(false)}
-                                    className="px-5 py-2.5 bg-white border border-gray-300 text-gray-700 font-bold rounded-lg text-xs sm:text-sm transition-colors cursor-pointer"
+                                    className="px-5 py-2.5 bg-[#E2E2E5] hover:bg-gray-300 text-gray-700 font-semibold rounded-xl text-xs sm:text-sm transition-colors cursor-pointer"
                                 >
                                     Cancel
                                 </button>
                                 <button
                                     type="submit"
-                                    className="px-6 py-2.5 bg-[#57154D] hover:bg-[#47103F] text-white font-bold rounded-lg text-xs sm:text-sm transition-all shadow-xs cursor-pointer"
+                                    className="px-6 py-2.5 bg-[#57154D] hover:bg-[#47103F] text-white font-semibold rounded-xl text-xs sm:text-sm transition-all shadow-xs cursor-pointer"
                                 >
                                     Publish Quiz for Review
                                 </button>

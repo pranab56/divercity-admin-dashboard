@@ -15,6 +15,7 @@ const routeTitleMap: Record<string, string> = {
   "/company-positions": "Company Positions",
   "/mentorship-program": "Mentorship Program",
   "/content-management": "Content Management",
+  "/hard-hat-womens-health": "Hard Hat & Women's Health",
   "/help-support": "Help & Support",
   "/legal": "Legal Content Management",
   "/notifications": "Notifications",

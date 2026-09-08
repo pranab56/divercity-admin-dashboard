@@ -11,6 +11,12 @@ import {
     Trash2,
 } from "lucide-react";
 import toast from "react-hot-toast";
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 type SupportRequest = {
     id: string;
@@ -345,40 +351,28 @@ export default function HelpSupportPage() {
                                                 </td>
 
                                                 {/* ACTIONS */}
-                                                <td className="py-5 px-4 text-right relative">
-                                                    <button
-                                                        type="button"
-                                                        onClick={() =>
-                                                            setActiveMenuId(
-                                                                activeMenuId === req.id ? null : req.id
-                                                            )
-                                                        }
-                                                        className="p-1.5 text-gray-400 hover:text-gray-700 hover:bg-gray-200/50 rounded-lg transition-colors cursor-pointer inline-flex items-center justify-center"
-                                                    >
-                                                        <MoreHorizontal className="w-5 h-5" />
-                                                    </button>
-
-                                                    {/* Dropdown Menu */}
-                                                    {activeMenuId === req.id && (
-                                                        <div className="absolute right-4 top-12 w-44 bg-white border border-gray-200/80 rounded-lg shadow-2xl z-40 p-2 text-left animate-in fade-in zoom-in-95 duration-150 space-y-0.5">
-                                                            <button
-                                                                type="button"
+                                                <td className="py-5 px-4 text-right">
+                                                    <DropdownMenu>
+                                                        <DropdownMenuTrigger className="p-1.5 text-gray-400 hover:text-gray-700 hover:bg-gray-200/50 rounded-lg transition-colors cursor-pointer inline-flex items-center justify-center outline-none">
+                                                            <MoreHorizontal className="w-5 h-5" />
+                                                        </DropdownMenuTrigger>
+                                                        <DropdownMenuContent align="end" className="w-44 bg-white border border-gray-200/80 rounded-lg shadow-2xl z-50 p-1.5 text-left space-y-0.5">
+                                                            <DropdownMenuItem
                                                                 onClick={() => handleOpenDetail(req)}
-                                                                className="w-full px-3 py-2 text-xs font-semibold text-gray-700 hover:bg-purple-50 rounded-lg transition-colors flex items-center gap-2 cursor-pointer"
+                                                                className="px-3 py-2 text-xs font-semibold text-gray-700 hover:bg-purple-50 rounded-lg transition-colors flex items-center gap-2 cursor-pointer"
                                                             >
                                                                 <Eye className="w-4 h-4 text-gray-500" />
                                                                 <span>View Request</span>
-                                                            </button>
-                                                            <button
-                                                                type="button"
+                                                            </DropdownMenuItem>
+                                                            <DropdownMenuItem
                                                                 onClick={() => handleRemoveRequest(req.id)}
-                                                                className="w-full px-3 py-2 text-xs font-semibold text-[#DC2626] hover:bg-red-50 rounded-lg transition-colors flex items-center gap-2 cursor-pointer"
+                                                                className="px-3 py-2 text-xs font-semibold text-[#DC2626] hover:bg-red-50 rounded-lg transition-colors flex items-center gap-2 cursor-pointer"
                                                             >
                                                                 <Trash2 className="w-4 h-4 text-[#DC2626]" />
                                                                 <span>Remove Request</span>
-                                                            </button>
-                                                        </div>
-                                                    )}
+                                                            </DropdownMenuItem>
+                                                        </DropdownMenuContent>
+                                                    </DropdownMenu>
                                                 </td>
                                             </tr>
                                         ))

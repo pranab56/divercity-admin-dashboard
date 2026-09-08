@@ -31,6 +31,12 @@ import {
     XCircle,
 } from "lucide-react";
 import toast from "react-hot-toast";
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 type TopTab = "Program" | "Applications" | "Match mentors";
 type ApplicationFilter = "All" | "Mentor" | "Mentee";
@@ -333,7 +339,7 @@ export default function MentorshipProgramPage() {
                                     CURRENT CYCLE
                                 </span>
                                 <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mt-1">
-                                    DIC Mentorship Programme 2024
+                                    DIIC Mentorship Programme 2024
                                 </h2>
                             </div>
                             <div className="px-3 py-1 bg-[#D1FAE5] text-[#059669] rounded-full text-xs font-bold flex items-center gap-1.5 shrink-0">
@@ -579,54 +585,40 @@ export default function MentorshipProgramPage() {
                                             </td>
 
                                             {/* ACTION */}
-                                            <td className="py-4 px-4 text-right relative">
-                                                <button
-                                                    type="button"
-                                                    onClick={() =>
-                                                        setActiveActionId(
-                                                            activeActionId === app.id ? null : app.id
-                                                        )
-                                                    }
-                                                    className="p-1.5 text-gray-400 hover:text-gray-700 hover:bg-gray-200/50 rounded-lg transition-colors cursor-pointer inline-flex items-center justify-center"
-                                                >
-                                                    <MoreHorizontal className="w-5 h-5" />
-                                                </button>
-
-                                                {/* Dropdown Menu */}
-                                                {activeActionId === app.id && (
-                                                    <div className="absolute right-4 top-12 w-44 bg-white border border-gray-200/80 rounded-lg shadow-2xl z-40 p-2 text-left animate-in fade-in zoom-in-95 duration-150 space-y-0.5">
-                                                        <button
-                                                            type="button"
+                                            <td className="py-4 px-4 text-right">
+                                                <DropdownMenu>
+                                                    <DropdownMenuTrigger className="p-1.5 text-gray-400 hover:text-gray-700 hover:bg-gray-200/50 rounded-lg transition-colors cursor-pointer inline-flex items-center justify-center outline-none">
+                                                        <MoreHorizontal className="w-5 h-5" />
+                                                    </DropdownMenuTrigger>
+                                                    <DropdownMenuContent align="end" className="w-44 bg-white border border-gray-200/80 rounded-lg shadow-2xl z-50 p-1.5 text-left space-y-0.5">
+                                                        <DropdownMenuItem
                                                             onClick={() => {
                                                                 setSelectedApplicant(app);
                                                                 setDetailModalType(
                                                                     app.type === "Mentor" ? "mentor" : "mentee"
                                                                 );
-                                                                setActiveActionId(null);
                                                             }}
-                                                            className="w-full px-3 py-2 text-xs font-semibold text-gray-700 hover:bg-purple-50 rounded-lg transition-colors flex items-center gap-2 cursor-pointer"
+                                                            className="px-3 py-2 text-xs font-semibold text-gray-700 hover:bg-purple-50 rounded-lg transition-colors flex items-center gap-2 cursor-pointer"
                                                         >
                                                             <User className="w-4 h-4 text-[#57154D]" />
                                                             <span>View Application</span>
-                                                        </button>
-                                                        <button
-                                                            type="button"
+                                                        </DropdownMenuItem>
+                                                        <DropdownMenuItem
                                                             onClick={() => updateApplicantStatus(app.id, "MATCHED")}
-                                                            className="w-full px-3 py-2 text-xs font-semibold text-[#059669] hover:bg-emerald-50 rounded-lg transition-colors flex items-center gap-2 cursor-pointer"
+                                                            className="px-3 py-2 text-xs font-semibold text-[#059669] hover:bg-emerald-50 rounded-lg transition-colors flex items-center gap-2 cursor-pointer"
                                                         >
                                                             <CheckCircle2 className="w-4 h-4 text-[#059669]" />
                                                             <span>Mark Matched</span>
-                                                        </button>
-                                                        <button
-                                                            type="button"
+                                                        </DropdownMenuItem>
+                                                        <DropdownMenuItem
                                                             onClick={() => updateApplicantStatus(app.id, "REJECTED")}
-                                                            className="w-full px-3 py-2 text-xs font-semibold text-[#DC2626] hover:bg-red-50 rounded-lg transition-colors flex items-center gap-2 cursor-pointer"
+                                                            className="px-3 py-2 text-xs font-semibold text-[#DC2626] hover:bg-red-50 rounded-lg transition-colors flex items-center gap-2 cursor-pointer"
                                                         >
                                                             <XCircle className="w-4 h-4 text-[#DC2626]" />
                                                             <span>Reject Application</span>
-                                                        </button>
-                                                    </div>
-                                                )}
+                                                        </DropdownMenuItem>
+                                                    </DropdownMenuContent>
+                                                </DropdownMenu>
                                             </td>
                                         </tr>
                                     ))
