@@ -119,8 +119,8 @@ export default function LoginPage() {
             >
               <div
                 className={`w-5 h-5 rounded-md border flex items-center justify-center transition-all duration-150 shadow-2xs ${rememberMe
-                    ? "bg-[#57154D] border-[#57154D] text-white"
-                    : "bg-white/90 border-gray-300 group-hover:border-[#57154D]"
+                  ? "bg-[#57154D] border-[#57154D] text-white"
+                  : "bg-white/90 border-gray-300 group-hover:border-[#57154D]"
                   }`}
               >
                 {rememberMe && <Check className="w-3.5 h-3.5 stroke-[3]" />}

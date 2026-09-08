@@ -305,7 +305,7 @@ export default function ContentManagementPage() {
             return;
         }
 
-        let finalQuestions = [...quizQuestions];
+        const finalQuestions = [...quizQuestions];
         // Automatically append active question if filled out and < 5
         if (currentQuestionText.trim() && finalQuestions.length < 5) {
             finalQuestions.push({
@@ -338,7 +338,7 @@ export default function ContentManagementPage() {
 
         setContentList((prev) => [newQuiz, ...prev]);
         toast.success(`Quiz created with ${finalQuestions.length} question(s) and published for review!`);
-        
+
         // Reset full quiz state
         setQuizTitle("");
         setQuizSubtitle("");
@@ -987,11 +987,10 @@ export default function ContentManagementPage() {
                                                             prev.map((o, i) => ({ ...o, isCorrect: i === idx }))
                                                         );
                                                     }}
-                                                    className={`flex items-center gap-3 px-4 py-3 bg-[#E8E8EB] sm:bg-[#EDEDF0] border rounded-xl cursor-pointer transition-all ${
-                                                        opt.isCorrect
+                                                    className={`flex items-center gap-3 px-4 py-3 bg-[#E8E8EB] sm:bg-[#EDEDF0] border rounded-xl cursor-pointer transition-all ${opt.isCorrect
                                                             ? "border-[#57154D] bg-purple-50/50"
                                                             : "border-transparent hover:bg-[#E2E2E5]"
-                                                    }`}
+                                                        }`}
                                                 >
                                                     <input
                                                         type="checkbox"
@@ -1029,11 +1028,10 @@ export default function ContentManagementPage() {
                                             type="button"
                                             onClick={handleAddQuestion}
                                             disabled={quizQuestions.length >= 5}
-                                            className={`px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all flex items-center gap-2 cursor-pointer shadow-2xs ${
-                                                quizQuestions.length >= 5
+                                            className={`px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all flex items-center gap-2 cursor-pointer shadow-2xs ${quizQuestions.length >= 5
                                                     ? "bg-gray-400 text-gray-200 cursor-not-allowed"
                                                     : "bg-[#646470] hover:bg-[#57154D] text-white"
-                                            }`}
+                                                }`}
                                         >
                                             <Plus className="w-4 h-4 text-white" />
                                             <span>Add Question</span>

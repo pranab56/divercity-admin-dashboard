@@ -234,8 +234,8 @@ export default function CreateServiceRequestModal({
                   type="button"
                   onClick={() => setFormPriority(pri)}
                   className={`py-2.5 px-2 rounded-lg font-medium text-xs sm:text-sm text-center cursor-pointer transition-all ${formPriority === pri
-                      ? "border-2 border-[#6B1294] bg-[#F2E7FC] text-[#6B1294] font-bold"
-                      : "bg-[#E2E2E5] text-gray-700 border border-transparent hover:bg-gray-300"
+                    ? "border-2 border-[#6B1294] bg-[#F2E7FC] text-[#6B1294] font-bold"
+                    : "bg-[#E2E2E5] text-gray-700 border border-transparent hover:bg-gray-300"
                     }`}
                 >
                   {pri}
@@ -254,8 +254,8 @@ export default function CreateServiceRequestModal({
                 type="button"
                 onClick={() => setFormIsOccupied(true)}
                 className={`py-3 px-4 rounded-lg font-semibold text-sm flex items-center justify-center cursor-pointer transition-all ${formIsOccupied
-                    ? "border-2 border-emerald-500 bg-emerald-100 text-emerald-800"
-                    : "bg-[#E2E2E5] text-gray-700 border border-transparent hover:bg-gray-300"
+                  ? "border-2 border-emerald-500 bg-emerald-100 text-emerald-800"
+                  : "bg-[#E2E2E5] text-gray-700 border border-transparent hover:bg-gray-300"
                   }`}
               >
                 Yes
@@ -264,8 +264,8 @@ export default function CreateServiceRequestModal({
                 type="button"
                 onClick={() => setFormIsOccupied(false)}
                 className={`py-3 px-4 rounded-lg font-semibold text-sm flex items-center justify-center cursor-pointer transition-all ${!formIsOccupied
-                    ? "border-2 border-red-300 bg-red-100 text-red-700"
-                    : "bg-[#E2E2E5] text-gray-700 border border-transparent hover:bg-gray-300"
+                  ? "border-2 border-red-300 bg-red-100 text-red-700"
+                  : "bg-[#E2E2E5] text-gray-700 border border-transparent hover:bg-gray-300"
                   }`}
               >
                 No
@@ -353,10 +353,10 @@ export default function CreateServiceRequestModal({
               onDragOver={(e) => e.preventDefault()}
               onDrop={handleDrop}
               className={`border-2 border-dashed rounded-lg p-5 text-center cursor-pointer transition-all ${errors.image
-                  ? "border-red-500 bg-red-50/30"
-                  : formImage
-                    ? "border-purple-400 bg-purple-50/30"
-                    : "border-gray-300/80 bg-[#E2E2E5]/60 hover:bg-white"
+                ? "border-red-500 bg-red-50/30"
+                : formImage
+                  ? "border-purple-400 bg-purple-50/30"
+                  : "border-gray-300/80 bg-[#E2E2E5]/60 hover:bg-white"
                 }`}
             >
               {formImage ? (

@@ -202,9 +202,6 @@ export default function MentorshipProgramPage() {
     // Detail Modal Types
     const [detailModalType, setDetailModalType] = useState<"mentor" | "mentee" | "org" | null>(null);
 
-    // Action Menu state for applicant table
-    const [activeActionId, setActiveActionId] = useState<string | null>(null);
-
     const toggleProgramPublish = () => {
         setIsProgramPublished(!isProgramPublished);
         toast.success(
@@ -219,7 +216,6 @@ export default function MentorshipProgramPage() {
             prev.map((a) => (a.id === id ? { ...a, status } : a))
         );
         toast.success(`Application status updated to ${status}`);
-        setActiveActionId(null);
     };
 
     const handleCreateMatchSubmit = (e: React.FormEvent) => {

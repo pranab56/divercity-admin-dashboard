@@ -86,18 +86,15 @@ export default function HelpSupportPage() {
     // Active view: list vs detail
     const [selectedRequest, setSelectedRequest] = useState<SupportRequest | null>(null);
     const [replyText, setReplyText] = useState("");
-    const [activeMenuId, setActiveMenuId] = useState<string | null>(null);
 
     const handleOpenDetail = (req: SupportRequest) => {
         setSelectedRequest(req);
         setReplyText(req.reply || "");
-        setActiveMenuId(null);
     };
 
     const handleRemoveRequest = (id: string) => {
         setRequests((prev) => prev.filter((r) => r.id !== id));
         toast.success("Support request removed");
-        setActiveMenuId(null);
     };
 
     const handleMarkResolved = () => {
