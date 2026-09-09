@@ -38,7 +38,7 @@ import {
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-type TopTab = "Program" | "Applications" | "Match mentors";
+type TopTab = "Program" | "Applications" | "Match Mentors";
 type ApplicationFilter = "All" | "Mentor" | "Mentee";
 
 type ApplicantItem = {
@@ -286,14 +286,14 @@ export default function MentorshipProgramPage() {
 
                     <button
                         type="button"
-                        onClick={() => setActiveTab("Match mentors")}
-                        className={`px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all flex items-center gap-2 cursor-pointer ${activeTab === "Match mentors"
+                        onClick={() => setActiveTab("Match Mentors")}
+                        className={`px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all flex items-center gap-2 cursor-pointer ${activeTab === "Match Mentors"
                             ? "bg-purple-100 text-[#57154D] font-bold shadow-2xs"
                             : "text-gray-600 hover:text-gray-900"
                             }`}
                     >
                         <Handshake className="w-4 h-4 text-[#57154D]" />
-                        <span>Match mentors</span>
+                        <span>Match Mentors</span>
                     </button>
                 </div>
             </div>
@@ -302,16 +302,16 @@ export default function MentorshipProgramPage() {
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div>
                     <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 tracking-tight">
-                        {activeTab === "Match mentors" ? "Match mentors" : "Mentorship program"}
+                        {activeTab === "Match Mentors" ? "Match Mentors" : "Mentorship program"}
                     </h1>
                     <p className="text-sm text-gray-500 font-medium mt-1">
-                        {activeTab === "Match mentors"
+                        {activeTab === "Match Mentors"
                             ? "Review fit signals and create intentional mentor-mentee pairs."
                             : "Set the details and opening window for this mentorship cycle."}
                     </p>
                 </div>
 
-                {activeTab !== "Match mentors" && (
+                {activeTab !== "Match Mentors" && (
                     <button
                         type="button"
                         onClick={toggleProgramPublish}
@@ -669,7 +669,7 @@ export default function MentorshipProgramPage() {
             )}
 
             {/* --- TAB 3: MATCH MENTORS TAB (Exact Match to Images 1 & 2) --- */}
-            {activeTab === "Match mentors" && (
+            {activeTab === "Match Mentors" && (
                 <div className="space-y-6">
                     {/* Cosmic Galaxy Rationale Banner */}
                     <div className="relative overflow-hidden rounded-lg p-6 sm:p-7 bg-[#2E0B28] text-white border border-[#57154D]/50 shadow-xl">

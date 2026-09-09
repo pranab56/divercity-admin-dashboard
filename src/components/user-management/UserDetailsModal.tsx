@@ -19,7 +19,7 @@ interface UserDetailsModalProps {
 }
 
 export default function UserDetailsModal({ user, onClose }: UserDetailsModalProps) {
-  const [selectedChild, setSelectedChild] = useState("Romo Rodriguez");
+  const [selectedChild, setSelectedChild] = useState("Roma Rodriguez");
 
   if (!user) return null;
 
@@ -491,7 +491,7 @@ export default function UserDetailsModal({ user, onClose }: UserDetailsModalProp
                       onChange={(e) => setSelectedChild(e.target.value)}
                       className="bg-transparent pr-4 focus:outline-none cursor-pointer appearance-none text-xs font-semibold text-gray-700"
                     >
-                      <option value="Romo Rodriguez">Romo Rodriguez</option>
+                      <option value="Roma Rodriguez">Roma Rodriguez</option>
                     </select>
                     <ChevronDown className="w-3.5 h-3.5 text-gray-400 pointer-events-none absolute right-2.5" />
                   </div>

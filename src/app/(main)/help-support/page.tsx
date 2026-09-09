@@ -34,19 +34,19 @@ type SupportRequest = {
 const initialRequests: SupportRequest[] = [
     {
         id: "req-1",
-        user: "Jhon",
+        user: "John Smith",
         title: "ID Card Issue",
         contact: "john@metromart.com",
         status: "Solved",
         date: "2024-01-15",
-        message: "Im Having Issue With The Log In System.It Keeps Showing An Error:",
-        reply: "Jbasdfkjbadfkjfkasjbndkjasbndkj",
+        message: "I am having an issue with the login system. It keeps showing an error.",
+        reply: "Your login credentials have been reset. Please try signing in again.",
         hasPdf: true,
     },
     {
         id: "req-2",
-        user: "Jhon",
-        title: "ID Card Issue",
+        user: "Sarah Connor",
+        title: "Profile Picture Upload",
         contact: "sarah@freshfarms.com",
         status: "Solved",
         date: "2024-01-14",
@@ -56,8 +56,8 @@ const initialRequests: SupportRequest[] = [
     },
     {
         id: "req-3",
-        user: "Jhon",
-        title: "ID Card Issue",
+        user: "Michael Brown",
+        title: "ID Card Replacement",
         contact: "mike@citygrocers.com",
         status: "Solved",
         date: "2024-01-12",
@@ -67,8 +67,8 @@ const initialRequests: SupportRequest[] = [
     },
     {
         id: "req-4",
-        user: "Jhon",
-        title: "ID Card Issue",
+        user: "Alan Miller",
+        title: "Account Suspension Warning",
         contact: "alan@grainmasters.com",
         status: "Solved",
         date: "2024-01-10",
@@ -140,7 +140,7 @@ export default function HelpSupportPage() {
                             Help & Support
                         </h1>
                         <p className="text-sm text-gray-500 font-medium mt-1">
-                            Solve the problems of the users.
+                            Manage and resolve user support inquiries.
                         </p>
                     </div>
 
@@ -151,7 +151,7 @@ export default function HelpSupportPage() {
                             <div>
                                 <span className="text-xs font-semibold text-gray-400 block">From :</span>
                                 <span className="text-sm font-bold text-gray-900 mt-0.5 block">
-                                    Sohidul
+                                    {selectedRequest.user}
                                 </span>
                             </div>
 
@@ -284,7 +284,7 @@ export default function HelpSupportPage() {
                             Help & Support
                         </h1>
                         <p className="text-sm text-gray-500 font-medium mt-1">
-                            Solve the problems of the users.
+                            Manage and resolve user support inquiries.
                         </p>
                     </div>
 

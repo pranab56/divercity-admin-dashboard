@@ -32,7 +32,7 @@ import {
 const initialRequestsList: UserItem[] = [
     {
         id: "REQ-001",
-        name: "Jhon",
+        name: "John Smith",
         role: "Teacher",
         email: "john@metromart.com",
         status: "Active",
@@ -45,7 +45,7 @@ const initialRequestsList: UserItem[] = [
     },
     {
         id: "REQ-002",
-        name: "Jhon",
+        name: "Sarah Jenkins",
         role: "Teacher",
         email: "sarah@freshfarms.com",
         status: "Active",
@@ -58,7 +58,7 @@ const initialRequestsList: UserItem[] = [
     },
     {
         id: "REQ-003",
-        name: "Jhon",
+        name: "Mike Ross",
         role: "Company",
         email: "mike@citygrocers.com",
         status: "Active",
@@ -73,7 +73,7 @@ const initialRequestsList: UserItem[] = [
     },
     {
         id: "REQ-004",
-        name: "Jhon",
+        name: "Alan Vance",
         role: "Company",
         email: "alan@grainmasters.com",
         status: "Suspended",
@@ -88,7 +88,7 @@ const initialRequestsList: UserItem[] = [
     },
     {
         id: "REQ-005",
-        name: "Romo",
+        name: "Roma Patel",
         role: "Student",
         email: "student@email.com",
         status: "Active",

@@ -112,7 +112,7 @@ export default function OptimusSidebar() {
                   >
                     <Link href={item.path} className="flex items-center justify-between w-full">
                       <div className="flex items-center gap-3">
-                        <item.icon className={`h-4 h-4 sm:h-5 sm:w-5 ${active ? "text-white" : "text-gray-500"}`} />
+                        <item.icon className={`w-4 h-4 sm:h-5 sm:w-5 ${active ? "text-white" : "text-gray-500"}`} />
                         <span className="text-sm font-medium">{item.name}</span>
                       </div>
                     </Link>

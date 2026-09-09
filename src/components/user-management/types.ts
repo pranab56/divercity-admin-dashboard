@@ -44,7 +44,7 @@ export type UserItem = {
 export const initialUsersList: UserItem[] = [
   {
     id: "USR-001",
-    name: "Jhon",
+    name: "John Smith",
     role: "Student",
     email: "john@metromart.com",
     status: "Active",
@@ -65,7 +65,7 @@ export const initialUsersList: UserItem[] = [
   },
   {
     id: "USR-002",
-    name: "Jhon",
+    name: "Sarah Jenkins",
     role: "Teacher",
     email: "sarah@freshfarms.com",
     status: "Active",
@@ -78,7 +78,7 @@ export const initialUsersList: UserItem[] = [
   },
   {
     id: "USR-003",
-    name: "Jhon",
+    name: "Mike Ross",
     role: "Parent",
     email: "mike@citygrocers.com",
     status: "Active",
@@ -97,7 +97,7 @@ export const initialUsersList: UserItem[] = [
   },
   {
     id: "USR-004",
-    name: "Jhon",
+    name: "Alan Vance",
     role: "Company",
     email: "alan@grainmasters.com",
     status: "Suspended",
@@ -112,7 +112,7 @@ export const initialUsersList: UserItem[] = [
   },
   {
     id: "USR-005",
-    name: "Romo",
+    name: "Roma Patel",
     role: "Student",
     email: "student@email.com",
     status: "Active",

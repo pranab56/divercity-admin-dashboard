@@ -12,9 +12,9 @@ export default function SettingsPage() {
   const [activeTab, setActiveTab] = useState<SettingsTab>("General");
 
   // General Settings Form State
-  const [platformName, setPlatformName] = useState("Divercity");
-  const [supportEmail, setSupportEmail] = useState("support@divercity.com");
-  const [emailAddress, setEmailAddress] = useState("admin@divercity.com");
+  const [platformName, setPlatformName] = useState("Diversity");
+  const [supportEmail, setSupportEmail] = useState("support@diversity.com");
+  const [emailAddress, setEmailAddress] = useState("admin@diversity.com");
   const [phoneNumber, setPhoneNumber] = useState("+1 (555) 234-5678");
   const [houseAddress, setHouseAddress] = useState("1200 Market Street, Suite 400, Austin, TX");
 

@@ -1,0 +1,163 @@
+[
+  {
+    "file": "src/app/(main)/content-management/page.tsx",
+    "line": 213,
+    "desc": "Possible non-English word 'korte'",
+    "text": "5 tar besi question add korte parbe na! (Maximum 5 questions allowed)",
+    "fullLine": "toast.error(\"5 tar besi question add korte parbe na! (Maximum 5 questions allowed)\");"
+  },
+  {
+    "file": "src/app/(main)/content-management/page.tsx",
+    "line": 213,
+    "desc": "Possible non-English word 'parbe'",
+    "text": "5 tar besi question add korte parbe na! (Maximum 5 questions allowed)",
+    "fullLine": "toast.error(\"5 tar besi question add korte parbe na! (Maximum 5 questions allowed)\");"
+  },
+  {
+    "file": "src/app/(main)/content-management/page.tsx",
+    "line": 327,
+    "desc": "Possible non-English word 'korte'",
+    "text": "5 tar besi question add korte parbe na! (Max 5 questions limit)",
+    "fullLine": "toast.error(\"5 tar besi question add korte parbe na! (Max 5 questions limit)\");"
+  },
+  {
+    "file": "src/app/(main)/content-management/page.tsx",
+    "line": 327,
+    "desc": "Possible non-English word 'parbe'",
+    "text": "5 tar besi question add korte parbe na! (Max 5 questions limit)",
+    "fullLine": "toast.error(\"5 tar besi question add korte parbe na! (Max 5 questions limit)\");"
+  },
+  {
+    "file": "src/app/(main)/hard-hat-womens-health/page.tsx",
+    "line": 31,
+    "desc": "Typo: 'Womens'/'womens' -> should be 'Women's'",
+    "text": "Womens Health",
+    "fullLine": "type MainTab = \"Hard Hat\" | \"Women's Health\";"
+  },
+  {
+    "file": "src/app/(main)/hard-hat-womens-health/page.tsx",
+    "line": 218,
+    "desc": "Typo: 'Womens'/'womens' -> should be 'Women's'",
+    "text": "Womens Health",
+    "fullLine": "setActiveTab(\"Women's Health\");"
+  },
+  {
+    "file": "src/app/(main)/hard-hat-womens-health/page.tsx",
+    "line": 223,
+    "desc": "Typo: 'Womens'/'womens' -> should be 'Women's'",
+    "text": "Womens Health",
+    "fullLine": "activeTab === \"Women's Health\""
+  },
+  {
+    "file": "src/app/(main)/help-support/page.tsx",
+    "line": 37,
+    "desc": "Typo in name: 'Jhon' -> should be 'John'",
+    "text": "Jhon",
+    "fullLine": "user: \"Jhon\","
+  },
+  {
+    "file": "src/app/(main)/help-support/page.tsx",
+    "line": 43,
+    "desc": "Gibberish text in UI string",
+    "text": "Jbasdfkjbadfkjfkasjbndkjasbndkj",
+    "fullLine": "reply: \"Jbasdfkjbadfkjfkasjbndkjasbndkj\","
+  },
+  {
+    "file": "src/app/(main)/help-support/page.tsx",
+    "line": 48,
+    "desc": "Typo in name: 'Jhon' -> should be 'John'",
+    "text": "Jhon",
+    "fullLine": "user: \"Jhon\","
+  },
+  {
+    "file": "src/app/(main)/help-support/page.tsx",
+    "line": 59,
+    "desc": "Typo in name: 'Jhon' -> should be 'John'",
+    "text": "Jhon",
+    "fullLine": "user: \"Jhon\","
+  },
+  {
+    "file": "src/app/(main)/help-support/page.tsx",
+    "line": 70,
+    "desc": "Typo in name: 'Jhon' -> should be 'John'",
+    "text": "Jhon",
+    "fullLine": "user: \"Jhon\","
+  },
+  {
+    "file": "src/app/(main)/user-requests/page.tsx",
+    "line": 35,
+    "desc": "Typo in name: 'Jhon' -> should be 'John'",
+    "text": "name: Jhon",
+    "fullLine": "name: \"Jhon\","
+  },
+  {
+    "file": "src/app/(main)/user-requests/page.tsx",
+    "line": 48,
+    "desc": "Typo in name: 'Jhon' -> should be 'John'",
+    "text": "name: Jhon",
+    "fullLine": "name: \"Jhon\","
+  },
+  {
+    "file": "src/app/(main)/user-requests/page.tsx",
+    "line": 61,
+    "desc": "Typo in name: 'Jhon' -> should be 'John'",
+    "text": "name: Jhon",
+    "fullLine": "name: \"Jhon\","
+  },
+  {
+    "file": "src/app/(main)/user-requests/page.tsx",
+    "line": 76,
+    "desc": "Typo in name: 'Jhon' -> should be 'John'",
+    "text": "name: Jhon",
+    "fullLine": "name: \"Jhon\","
+  },
+  {
+    "file": "src/components/appSidebar/AppsideBar.tsx",
+    "line": 64,
+    "desc": "Typo: 'Womens'/'womens' -> should be 'Women's'",
+    "text": "name: Hard Hat & Women",
+    "fullLine": "{ name: \"Hard Hat & Women's Health\", path: \"/hard-hat-womens-health\", icon: HeartPulse },"
+  },
+  {
+    "file": "src/components/auth/VerifyEmail.tsx",
+    "line": 139,
+    "desc": "Typo: 'Didn' -> should be 'Didn't'",
+    "text": "Name=text-gray-700 font-medium",
+    "fullLine": "<span className=\"text-gray-700 font-medium\">Didn&apos;t receive the code?</span>"
+  },
+  {
+    "file": "src/components/header/Header.tsx",
+    "line": 18,
+    "desc": "Typo: 'Womens'/'womens' -> should be 'Women's'",
+    "text": "/hard-hat-womens-health: Hard Hat & Womens Health",
+    "fullLine": "\"/hard-hat-womens-health\": \"Hard Hat & Women's Health\","
+  },
+  {
+    "file": "src/components/user-management/types.ts",
+    "line": 47,
+    "desc": "Typo in name: 'Jhon' -> should be 'John'",
+    "text": "name: Jhon",
+    "fullLine": "name: \"Jhon\","
+  },
+  {
+    "file": "src/components/user-management/types.ts",
+    "line": 68,
+    "desc": "Typo in name: 'Jhon' -> should be 'John'",
+    "text": "name: Jhon",
+    "fullLine": "name: \"Jhon\","
+  },
+  {
+    "file": "src/components/user-management/types.ts",
+    "line": 81,
+    "desc": "Typo in name: 'Jhon' -> should be 'John'",
+    "text": "name: Jhon",
+    "fullLine": "name: \"Jhon\","
+  },
+  {
+    "file": "src/components/user-management/types.ts",
+    "line": 100,
+    "desc": "Typo in name: 'Jhon' -> should be 'John'",
+    "text": "name: Jhon",
+    "fullLine": "name: \"Jhon\","
+  }
+]

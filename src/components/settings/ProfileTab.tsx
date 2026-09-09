@@ -9,25 +9,25 @@ export default function ProfileTab() {
     // Profile Information
     firstName: "Alex",
     lastName: "Morgan",
-    username: "Alex",
-    jobTitle: "Morgan",
+    username: "alexmorgan",
+    jobTitle: "Senior Administrator",
     email: "alex.morgan@projexpro.com",
     phone: "+1 (555) 234-5678",
 
     // Registered Business Information
     parentCompanyName: "ProjexPro Management LLC",
-    parentCompanyAddress: "ProjexPro Management LLC",
+    parentCompanyAddress: "100 Innovation Way, Suite 400",
     city: "Los Angeles",
     state: "CA",
     country: "United States",
-    website: "alexmorgan.com",
+    website: "https://projexpro.com",
     businessPhone: "+1 (555) 234-5678",
 
     // Secondary Contact Information
-    secFullName: "Alex",
-    secJobTitle: "Morgan",
-    secEmail: "alex.morgan@projexpro.com",
-    secPhone: "+1 (555) 234-5678",
+    secFullName: "Sarah Jenkins",
+    secJobTitle: "Operations Manager",
+    secEmail: "sarah.j@projexpro.com",
+    secPhone: "+1 (555) 234-5679",
   });
 
   const [profilePhoto, setProfilePhoto] = useState<string>("");

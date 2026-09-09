@@ -6,8 +6,8 @@ import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import "../globals.css";
 
 export const metadata: Metadata = {
-  title: "Divercity Admin Dashboard",
-  description: "Divercity Admin Dashboard",
+  title: "Diversity Admin Dashboard",
+  description: "Diversity Admin Dashboard",
 };
 
 export default function RootLayout({
