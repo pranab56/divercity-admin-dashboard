@@ -35,7 +35,6 @@ export default function PropertyReviewGrid({
           className="bg-[#EBEBEB] border border-gray-300/50 rounded-lg overflow-hidden shadow-xs flex flex-col justify-between"
         >
           <div>
-            {/* Image Header */}
             <div className="relative h-44 w-full bg-gray-300">
               <img
                 src={prop.imageUrl}
@@ -84,7 +83,7 @@ export default function PropertyReviewGrid({
             </div>
           </div>
 
-          {/* Footer Action Bar */}
+
           <div className="p-4 bg-[#EBEBEB] border-t border-gray-300/60 flex items-center justify-between gap-2">
             <button
               type="button"

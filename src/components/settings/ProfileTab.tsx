@@ -374,6 +374,7 @@ export default function ProfileTab() {
             <label className="block text-xs sm:text-sm font-semibold text-gray-700 mb-1.5">
               Job Title / Department
             </label>
+
             <input
               type="text"
               name="secJobTitle"

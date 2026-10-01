@@ -19,8 +19,12 @@ import {
     X,
     XCircle,
 } from "lucide-react";
+
 import toast from "react-hot-toast";
+
 import TipTapEditor from "@/TipTapEditor/TipTapEditor";
+
+
 import {
     Select,
     SelectContent,
@@ -28,6 +32,8 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select";
+
+
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -58,6 +64,7 @@ type VideoApprovalItem = {
     status: "Approved" | "Pending" | "Rejected";
     thumbBg: string;
 };
+
 
 const initialContentList: ContentItem[] = [
     {
@@ -212,12 +219,12 @@ export default function ContentManagementPage() {
         if (quizQuestions.length >= 5) {
             toast.error("Maximum 5 questions allowed!");
             return;
-        }
+        };
 
         if (!currentQuestionText.trim()) {
             toast.error("Please enter a question title");
             return;
-        }
+        };
 
         const newQuestion: QuizQuestion = {
             id: `q-${Date.now()}`,
@@ -237,8 +244,6 @@ export default function ContentManagementPage() {
             { text: "Option 2", isCorrect: false },
             { text: "Option 3", isCorrect: false },
             { text: "Option 4", isCorrect: false },
-
-
         ]);
     };
 
@@ -252,12 +257,9 @@ export default function ContentManagementPage() {
     const [contentType, setContentType] = useState("Career Exploration");
     const [articleTitle, setArticleTitle] = useState("");
     const [articleContent, setArticleContent] = useState("");
-
     const fileInputRef = useRef<HTMLInputElement | null>(null);
     const [selectedFile, setSelectedFile] = useState<File | null>(null);
     const [videoPreviewUrl, setVideoPreviewUrl] = useState<string | null>(null);
-
-    // Handle local file selection
     const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
         if (file) {
@@ -290,7 +292,7 @@ export default function ContentManagementPage() {
     };
 
     const handleRemoveSelectedFile = () => {
-        if (videoPreviewUrl) {
+        if (videoPreviewUrl) {  
             URL.revokeObjectURL(videoPreviewUrl);
         }
         setSelectedFile(null);
